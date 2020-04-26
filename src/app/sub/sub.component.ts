@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DummyService } from '../dummy.service';
 
 @Component({
   selector: 'app-sub',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sub.component.css'],
 })
 export class SubComponent implements OnInit {
-  constructor() {}
+  constructor(private service: DummyService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.service.val$.subscribe((v) => {
+      const foo = v;
+    });
+  }
 }
